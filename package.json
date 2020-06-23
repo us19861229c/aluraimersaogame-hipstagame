@@ -1,0 +1,15 @@
+{
+  "name": "joguinho",
+  "version": "1.0.0",
+  "description": "",
+  "main": "p5.js",
+  "scripts": {
+    "start": "npx http-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "p5": "^1.0.0"
+  }
+}
