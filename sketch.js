@@ -1,7 +1,22 @@
+let cenario, cenarioBg, personagem, trilhaSonora;
+
+function preload() {
+	cenarioBg = loadImage('imagens/cenario/floresta.png');
+	trilhaSonora = loadSound('sons/trilha_jogo.mp3');
+	personagem = loadImage('imagens/personagem/correndo.png');
+}
+
 function setup() {
-  createCanvas(400, 400);
+	createCanvas(windowWidth, windowHeight);
+	frameRate(40);
+	trilhaSonora.loop();
+
+	cenario = new Cenario(cenarioBg, 2);
+	personagem = new Personagem(personagem);
 }
 
 function draw() {
-  background(220);
+	cenario.exibe();
+	cenario.move();
+	personagem.exibe();
 }
