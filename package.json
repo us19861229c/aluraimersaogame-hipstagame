@@ -4,7 +4,7 @@
   "description": "",
   "main": "p5.js",
   "scripts": {
-    "start": "npx http-server"
+    "start": "npx light-server -s . -o -w \"**/*.js\""
   },
   "keywords": [],
   "author": "",

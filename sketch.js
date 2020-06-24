@@ -33,9 +33,9 @@ function keyPressed() {
 }
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	frameRate(40);
-	trilhaSonora.loop();
+	createCanvas(windowWidth, windowHeight)
+	frameRate(40)
+	trilhaSonora.loop()
 
 	cenario = new Cenario(cenario, 4)
 	personagem = new Personagem(matrizPersonagem, personagem, 0, 220, 270, 220, 270)
