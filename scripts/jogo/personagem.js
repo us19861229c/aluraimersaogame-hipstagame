@@ -1,16 +1,21 @@
 class Personagem extends Animacao {
-	constructor(matriz, sprite, x, largura, altura, larguraSprite, alturaSprite) {
-		super(matriz, sprite, x, largura, altura, larguraSprite, alturaSprite)
+	constructor(matriz, sprite, x, variacaoY, largura, altura, larguraSprite, alturaSprite) {
+		super(matriz, sprite, x, variacaoY, largura, altura, larguraSprite, alturaSprite)
 
-		this.yInicial = height - this.altura
+		this.yInicial = height - this.altura - this.variacaoY
 		this.y = this.yInicial
 
-		this.velocidadeGravidade = 4
+		this.velocidadeGravidade = 6
 		this.velocidadePulo = 0
+		this.alturaPulo = -50
+		this.pulos = 0
 	}
 
 	pula() {
-		this.velocidadePulo = - 50
+		if (this.pulos < 3) {
+			this.velocidadePulo = this.alturaPulo
+			this.pulos++
+		}
 	}
 
 	gravidade() {
@@ -19,6 +24,7 @@ class Personagem extends Animacao {
 
 		if (this.y > this.yInicial) {
 			this.y = this.yInicial
+			this.pulos = 0
 		}
 	}
 

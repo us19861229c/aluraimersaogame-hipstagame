@@ -1,14 +1,16 @@
 class Animacao {
-	constructor(matriz, sprite, x, largura, altura, larguraSprite, alturaSprite) {
+	constructor(matriz, sprite, x, variacaoY, largura, altura, larguraSprite, alturaSprite) {
 		this.matriz = matriz
 		this.sprite = sprite
+		this.x = x
+		this.variacaoY = variacaoY
 		this.largura = largura
 		this.altura = altura
-		this.x = x
-		this.y = height - this.altura
 		this.larguraSprite = larguraSprite
 		this.alturaSprite = alturaSprite
 		this.frameAtual = 0
+
+		this.y = height - this.altura - this.variacaoY
 	}
 
 	exibe() {
