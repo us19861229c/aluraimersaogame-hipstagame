@@ -1,6 +1,6 @@
 let jogo, cenario, cenaAtual = 'telaInicial', cenas, telaInicial, gameOver,
-		pontuacao, trilhaSonora, somPulo, bgInicial, fonteInicial, botao,
-		personagem, inimigo, troll, azaza
+		pontuacao, trilhaSonora, somPulo, bgInicial, fonteInicial, botao, vida,
+		coracao, personagem, inimigo, troll, azaza, saveGame
 
 const matrizInimigo = [
 		[0, 0], [104, 0], [208, 0], [312, 0],

@@ -1,0 +1,21 @@
+{
+	"configs": {
+		"vidaMaxima": 5,
+		"vidaInicial": 5
+	},
+	"mapa": [
+		{
+			"viloes": 0,
+			"velocidade": 10
+		},{
+			"viloes": 1,
+			"velocidade": 30
+		},{
+			"viloes": 1,
+			"velocidade": 15
+		},{
+			"viloes": 2,
+			"velocidade": 40
+		}
+	]
+}

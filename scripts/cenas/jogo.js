@@ -1,15 +1,17 @@
 class Jogo {
 	constructor() {
-		this.inimigoAtual = 0
+		this.indice = 0
+		this.mapa = saveGame.mapa
 	}
 
 	prepara() {
 		cenario = new Cenario(cenario, 4)
+		vida = new Vida(saveGame.configs.vidaMaxima, saveGame.configs.vidaInicial)
 		pontuacao = new Pontuacao()
 		personagem = new Personagem(matrizPersonagem, personagem, 0, 30, 220, 270, 220, 270)
-		viloes.push(new Inimigo(matrizInimigo, inimigo, width - 104, 30, 104, 104, 104, 104, 10, 100))
-		viloes.push(new Inimigo(matrizTroll, troll, width, -10, 400, 400, 400, 400, 10, 500))
-		viloes.push(new Inimigo(matrizAzaza, azaza, width - 200, 500, 200, 150, 200, 150, 8, 300))
+		viloes.push(new Inimigo(matrizInimigo, inimigo, width - 104, 30, 104, 104, 104, 104, 10))
+		viloes.push(new Inimigo(matrizTroll, troll, width, -10, 400, 400, 400, 400, 10))
+		viloes.push(new Inimigo(matrizAzaza, azaza, width - 200, 500, 200, 150, 200, 150, 8))
 	}
 
 	tecla(key) {
@@ -29,22 +31,31 @@ class Jogo {
 		personagem.exibe()
 		personagem.gravidade()
 
-		const vilao = viloes[this.inimigoAtual]
+		const linhaAtual = this.mapa[this.indice]
+		const vilao = viloes[linhaAtual.viloes]
 		const vilaoVisivel = vilao.x < - vilao.largura
+		vilao.velocidade = linhaAtual.velocidade
 
 		if (vilaoVisivel) {
-			this.inimigoAtual++
-			if (this.inimigoAtual > 2) {
-				this.inimigoAtual = 0
+			this.indice++
+			vilao.reaparece()
+			if (this.indice > this.mapa.length - 1) {
+				this.indice = 0
 			}
-			vilao.velocidade = parseInt(random(10, 30))
 		}
 
 		vilao.exibe()
 		vilao.move()
 		if (personagem.colisao(vilao)) {
-			image(gameOver, width / 2 - 206, height / 2 - 39)
-			noLoop()
+			vida.perde()
+			personagem.ficaInvencivel()
+
+			if (vida.vida === 0) {
+				image(gameOver, width / 2 - 206, height / 2 - 39)
+				noLoop()
+			}
 		}
+
+		vida.desenha()
 	}
 }
